@@ -65,6 +65,7 @@ flowchart TD
 You can see some representative views of the current APP in screenshots/
 
 
+## Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
