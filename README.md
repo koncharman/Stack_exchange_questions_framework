@@ -32,7 +32,7 @@ flowchart TD
     
     LD --> TXT["Text Analysis"]
     TXT --> TXT_P["Preprocessing"]
-    TXT --> TXT_T['Topic Modeling']
+    TXT_P --> TXT_T['Topic Modeling']
     TXT_T --> TXT_E["Topic Evaluation"]
     TXT_T --> PO['Post Analysis']
     
