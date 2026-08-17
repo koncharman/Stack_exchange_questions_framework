@@ -186,7 +186,7 @@ def xicor(X, Y, ties=True):
 def main_nav_controls() -> List[NavSetArg]:
     return [
 
-        ui.nav_panel("Home",
+        ui.nav_panel("Data Overview",
                      ui.card(
                          ui.HTML("<h1><strong> Load file </strong> </h1>"),
                         ui.input_file("load_file","",accept=[".csv"]),
@@ -202,7 +202,7 @@ def main_nav_controls() -> List[NavSetArg]:
                      ),
 
                      ),
-        ui.nav_panel("Statistics",
+        ui.nav_panel("Post Metrics",
                      ui.navset_tab(
                     ui.nav_panel("Posts",
 
@@ -245,7 +245,7 @@ def main_nav_controls() -> List[NavSetArg]:
 
 
                                  ui.card(
-                                     ui.HTML("<h1><strong>  Tag Statistics  </strong></h1>"),
+                                     ui.HTML("<h1><strong>  Tag Frequencies  </strong></h1>"),
                                      ui.span(),
                                  ui.row(ui.column(4,ui.output_data_frame("tag_frequency_table")),ui.column(4,ui.output_plot("tag_wordcloud_output")))
 
@@ -291,7 +291,7 @@ def main_nav_controls() -> List[NavSetArg]:
 
 
                 ui.card(
-                    ui.HTML("<h1><strong>  Text Statistics  </strong></h1>"),
+                    ui.HTML("<h1><strong>  Word Frequencies  </strong></h1>"),
                     ui.row(ui.column(4,ui.output_data_frame("word_frequency_table")),ui.column(4,ui.output_plot("word_wordcloud_output")))  ,
 
 
@@ -362,7 +362,9 @@ def main_nav_controls() -> List[NavSetArg]:
                                       ui.input_radio_buttons(
                                           "pop_dif_weight_option",
                                           "Topic properties",
-                                          {"max_weight": "Only dominant topic", "all_weight": "Use weights","corr_option":"Spearman correlation"}
+                                          {"max_weight": "Only dominant topic", "all_weight": "Use weights"
+                                              #,"corr_option":"Spearman correlation"
+                                           }
                                       ),
                                       ui.input_action_button("pop_dif_metrics_button_topic", "Calculate analytics"),
                                       ),
@@ -378,9 +380,13 @@ def main_nav_controls() -> List[NavSetArg]:
                                           ui.HTML("<h2><strong> 2d Matrix with metrics </strong> </h2>"),
                                           ui.card(
                                           ui.row(ui.column(4,ui.input_radio_buttons(id="topic_2dmetrics_1",label="Metric 1"
-                                            ,choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers","poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"}))
+                                            ,choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers"
+                                                  #,"poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"
+                                                      }))
                                                  ,ui.column(4,ui.input_radio_buttons(id="topic_2dmetrics_2",label="Metric 2"
-                                            ,choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers","poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"})),
+                                            ,choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers"
+                                                      #,"poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"
+                                                                                     })),
 
                                                  )
                                           ),
@@ -420,12 +426,10 @@ def main_nav_controls() -> List[NavSetArg]:
                                       ui.input_radio_buttons(
                                           "topic_reg_opt",
                                           "Model options",
-                                          { "grad_opt":"Gradient Boosting","dec_tree_opt":"Decision Trees","rf_opt": "Random Forest","linear_opt": "Linear Regression",
-                                            "pois_opt":"Poisson Regression",
-                                            "zero_infl_poiss":"Zero Inflated Poisson Regression",
-                                            "neg_bin_opt":"Negative Binomial Regression",
-                                            "zero_neg_bin_opt":"Zero Inflated Negative Binomial Regression",
-                                            "bin_opt":"Binomial Regression"
+                                          { "grad_opt":"Gradient Boosting","dec_tree_opt":"Decision Trees","rf_opt": "Random Forest"
+
+                                           #,"linear_opt": "Linear Regression","pois_opt":"Poisson Regression","zero_infl_poiss":"Zero Inflated Poisson Regression","neg_bin_opt":"Negative Binomial Regression","zero_neg_bin_opt":"Zero Inflated Negative Binomial Regression","bin_opt":"Binomial Regression"
+
                                             }
                                       ),
                                       ui.input_radio_buttons(
@@ -531,7 +535,9 @@ def main_nav_controls() -> List[NavSetArg]:
                                           "<h1><strong> Tag cluster popularity and difficulty </strong> </h1>"),
                                                    ui.input_radio_buttons(id="pop_dif_weight_option_clust",
                                                                       label="Select a weighting strategy",
-                                                                      choices={"max_weight": "Only dominant cluster","all_weight":"Weighting option","corr_option":"Spearman correlation"}),
+                                                                      choices={"max_weight": "Only dominant cluster","all_weight":"Weighting option"
+                                                                          #,"corr_option":"Spearman correlation"
+                                                                               }),
 
                                                    ui.input_action_button("pop_dif_metrics_button_tag_clust", "Calculate analytics"),
                                       ),
@@ -549,10 +555,14 @@ def main_nav_controls() -> List[NavSetArg]:
                                           ui.card(
                                               ui.row(ui.column(4, ui.input_radio_buttons(id="tag_clust_2dmetrics_1",
                                                                                          label="Metric 1"
-                                                                                         , choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers","poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"}))
+                                                                                         , choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers"
+                                                      #,"poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"
+                                                                                                    }))
                                                      , ui.column(4, ui.input_radio_buttons(id="tag_clust_2dmetrics_2",
                                                                                            label="Metric 2"
-                                                                                         , choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers","poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"})),
+                                                                                         , choices={"views_opt":"Average Views","score_opt":"Weight Score","comm_opt":"Weight Comments","answer_opt":"Weight Answers","answer_views_opt":"Weight Answers / Weight Views","acc_opt":"Weight with accepted answers"
+                                                          #,"poppc_opt":"Popularity Principal component","difpc_opt":"Difficulty Principal component"
+                                                                                                    })),
 
                                                      )
                                           ),
@@ -594,13 +604,10 @@ def main_nav_controls() -> List[NavSetArg]:
                                                            "clust_reg_opt",
                                                            "Model options",
                                                            {"grad_opt": "Gradient Boosting",
-                                                            "dec_tree_opt": "Decision Trees", "rf_opt": "Random Forest",
-                                                            "linear_opt": "Linear Regression",
-                                                            "pois_opt": "Poisson Regression",
-                                                            "zero_infl_poiss": "Zero Inflated poisson Regression",
-                                                            "neg_bin_opt": "Negative Binomial Regression",
-                                                            "zero_neg_bin_opt": "Zero Inflated Negative Binomial Regression",
-                                                            "bin_opt": "Binomial Regression"
+                                                            "dec_tree_opt": "Decision Trees", "rf_opt": "Random Forest"
+
+                                                            #,"linear_opt": "Linear Regression","pois_opt": "Poisson Regression","zero_infl_poiss": "Zero Inflated poisson Regression","neg_bin_opt": "Negative Binomial Regression","zero_neg_bin_opt": "Zero Inflated Negative Binomial Regression","bin_opt": "Binomial Regression"
+
                                                             }
                                                        ),
                                                        ui.input_radio_buttons(
@@ -689,9 +696,9 @@ def main_nav_controls() -> List[NavSetArg]:
                                       ui.input_radio_buttons(
                                           "pop_dif_weight_option_doc",
                                           "Topic properties",
-                                          {"max_weight": "Only dominant cluster", "all_weight": "Use weights",
-                                           "corr_option": "Spearman correlation"}
-                                      ),
+                                          {"max_weight": "Only dominant cluster", "all_weight": "Use weights"
+                                           #,"corr_option": "Spearman correlation"
+                                           }),
                                       ui.input_action_button("pop_dif_metrics_button_doc", "Calculate analytics"),
                                   ),
                                   ui.card(
@@ -711,18 +718,20 @@ def main_nav_controls() -> List[NavSetArg]:
                                                   "views_opt": "Average Views", "score_opt": "Weight Score",
                                                   "comm_opt": "Weight Comments", "answer_opt": "Weight Answers",
                                                   "answer_views_opt": "Weight Answers / Weight Views",
-                                                  "acc_opt": "Weight with accepted answers",
-                                                  "poppc_opt": "Popularity Principal component",
-                                                  "difpc_opt": "Difficulty Principal component"}))
+                                                  "acc_opt": "Weight with accepted answers"
+                                                  #,"poppc_opt": "Popularity Principal component",
+                                                  #"difpc_opt": "Difficulty Principal component"
+                                              }))
                                                  , ui.column(4, ui.input_radio_buttons(id="doc_2dmetrics_2",
                                                                                        label="Metric 2"
                                                                                        , choices={
                                                       "views_opt": "Average Views", "score_opt": "Weight Score",
                                                       "comm_opt": "Weight Comments", "answer_opt": "Weight Answers",
                                                       "answer_views_opt": "Weight Answers / Weight Views",
-                                                      "acc_opt": "Weight with accepted answers",
-                                                      "poppc_opt": "Popularity Principal component",
-                                                      "difpc_opt": "Difficulty Principal component"})),
+                                                      "acc_opt": "Weight with accepted answers"
+                                                      #,"poppc_opt": "Popularity Principal component",
+                                                      #"difpc_opt": "Difficulty Principal component"
+                                                                                       })),
 
                                                  )
                                       ),
@@ -760,12 +769,10 @@ def main_nav_controls() -> List[NavSetArg]:
                                           "doc_reg_opt",
                                           "Model options",
                                           {"grad_opt": "Gradient Boosting", "dec_tree_opt": "Decision Trees",
-                                           "rf_opt": "Random Forest", "linear_opt": "Linear Regression",
-                                           "pois_opt": "Poisson Regression",
-                                           "zero_infl_poiss":"Zero Inflated Poisson Regression",
-                                           "neg_bin_opt": "Negative Binomial Regression",
-                                           "zero_neg_bin_opt":"Zero Inflated Negative Binomial Regression",
-                                           "bin_opt": "Binomial Regression"
+                                           "rf_opt": "Random Forest"
+
+                                            #, "linear_opt": "Linear Regression","pois_opt": "Poisson Regression","zero_infl_poiss":"Zero Inflated Poisson Regression","neg_bin_opt": "Negative Binomial Regression","zero_neg_bin_opt":"Zero Inflated Negative Binomial Regression","bin_opt": "Binomial Regression"
+
                                            }
                                       ),
                                       ui.input_radio_buttons(
@@ -1242,8 +1249,8 @@ def shiny_server(input: Inputs, output: Outputs, session: Session):
                 topic_dif_metrics["Weight with accepted answers"].append(sum(doc_topic_dists[:,i]*with_accepted_answer)/sum(doc_topic_dists[:,i]))
 
         # Principal components
-        topic_pop_metrics["Popularity Principal component"]=list(principal_component_anal(pd.DataFrame(topic_pop_metrics),n_components=1)[:,0])
-        topic_dif_metrics["Difficulty Principal component"]=list(principal_component_anal(pd.DataFrame(topic_dif_metrics),n_components=1)[:,0])
+        #topic_pop_metrics["Popularity Principal component"]=list(principal_component_anal(pd.DataFrame(topic_pop_metrics),n_components=1)[:,0])
+        #topic_dif_metrics["Difficulty Principal component"]=list(principal_component_anal(pd.DataFrame(topic_dif_metrics),n_components=1)[:,0])
 
         return topic_pop_metrics , topic_dif_metrics
 
@@ -1586,21 +1593,63 @@ def shiny_server(input: Inputs, output: Outputs, session: Session):
     @render.plot
     def tag_wordcloud_output(alt="Tag wordcloud"):
 
-        diag_values_tag = pd.DataFrame(unique_tags(), columns=["Tag"])
-        diag_values_tag['Count'] = np.diagonal(tag_to_tag_matrix()[:, :]).copy()
+        # Create tag frequency dataframe
+        diag_values_tag = pd.DataFrame(
+            unique_tags(),
+            columns=["Tag"]
+        )
 
-        diag_values_tag = diag_values_tag.sort_values(by="Count", ascending=False)
+        diag_values_tag["Count"] = np.diagonal(
+            tag_to_tag_matrix()[:, :]
+        ).copy()
 
-        # Convert DataFrame to dictionary
-        diag_values_tag = dict(zip(diag_values_tag['Tag'], diag_values_tag['Count']))
+        # Sort by frequency
+        diag_values_tag = diag_values_tag.sort_values(
+            by="Count",
+            ascending=False
+        )
+
+        # Convert to dictionary for WordCloud
+        tag_frequencies = dict(
+            zip(
+                diag_values_tag["Tag"],
+                diag_values_tag["Count"]
+            )
+        )
 
         # Generate word cloud
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(diag_values_tag)
+        wordcloud = WordCloud(
+            width=5000,
+            height=5000,
+            background_color=None,
+            mode="RGBA",
+            colormap="plasma",
+            max_words=120,
+            prefer_horizontal=0.85,
+            relative_scaling=0.4,
+            min_font_size=12,
+            margin=4,
+            random_state=42
+        ).generate_from_frequencies(tag_frequencies)
 
+        # Create figure
+        fig, ax = plt.subplots(figsize=(12, 6))
 
-        fig=plt.imshow(wordcloud,interpolation="bilinear")
+        # Transparent background
+        fig.patch.set_alpha(0)
+        ax.set_facecolor("none")
 
-        return(fig)
+        # Display word cloud
+        ax.imshow(
+            wordcloud,
+            interpolation="bilinear"
+        )
+
+        ax.axis("off")
+
+        fig.tight_layout(pad=0)
+
+        return fig
 
 
     @reactive.effect
@@ -1620,17 +1669,43 @@ def shiny_server(input: Inputs, output: Outputs, session: Session):
 
         #print(main_data()['new_text'][0])
 
-
         @render.plot
         def word_wordcloud_output(alt="Word wordcloud"):
 
-            # Generate word cloud
+            text = main_data().new_text.dropna().str.cat(sep=" ")
 
-            wordcloud = WordCloud(width=800, height=400, background_color='white').generate(main_data().new_text.str.cat(sep=' '))
+            wordcloud = WordCloud(
+                width=5000,
+                height=5000,
+                background_color=None,
+                mode="RGBA",
+                colormap="plasma",#viridis
+                max_words=120,
+                prefer_horizontal=0.85,
+                relative_scaling=0.4,
+                min_font_size=12,
+                margin=4,
+                random_state=42
+            ).generate(text)
 
-            fig = plt.imshow(wordcloud, interpolation="bilinear")
+            # Create figure
+            fig, ax = plt.subplots(figsize=(12, 6))
 
-            return (fig)
+            # Transparent background
+            fig.patch.set_alpha(0)
+            ax.set_facecolor("none")
+
+            # Display word cloud
+            ax.imshow(
+                wordcloud,
+                interpolation="bilinear"
+            )
+
+            ax.axis("off")
+
+            fig.tight_layout(pad=0)
+
+            return fig
 
         @render.data_frame
         def word_frequency_table(alt="Word Frequencies"):
