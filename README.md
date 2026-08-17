@@ -32,16 +32,16 @@ flowchart TD
     
     LD --> TXT["Text Analysis"]
     TXT --> TXT_P["Preprocessing"]
-    TXT_P --> TXT_T['Topic Modeling']
+    TXT_P --> TXT_T["Topic Modeling"]
     TXT_T --> TXT_E["Topic Evaluation"]
-    TXT_T --> PO['Post Analysis']
+    TXT_T --> PO["Post Analysis"]
     
-    LD --> TAG['Tag Analysis']
+    LD --> TAG["Tag Analysis"]
     TAG --> TAG_C["Tag Clustering"]
     TAG_C --> CEV["Cluster Evaluation"]
     TAG_C --> PO
     
-    LD --> DC['Document Analysis']
+    LD --> DC["Document Analysis"]
     DC --> DC_C["Document Clustering NMF"]
     DC_C --> CEV
     DC_C --> PO
