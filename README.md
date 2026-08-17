@@ -42,7 +42,7 @@ flowchart TD
     TAG_C --> PO
     
     LD --> DC['Document Analysis']
-    DC --> DC_C["Document Clustering (NMF)"]
+    DC --> DC_C["Document Clustering NMF"]
     DC_C --> DC_E["Cluster Evaluation"]
     DC_C --> PO
     
