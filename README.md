@@ -54,8 +54,8 @@ flowchart TD
     classDef out fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
     classDef sel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px;
 
-    class LD,TXT_P,TXT_T,TAG_C,DC in;
-    class RPM_P,RPM_B,PO,DIF,FET,TXT_E,_TAG_E,DOC_E out;
+    class LD,TXT_P,TXT_T,TAG_C,DC_C in;
+    class RPM_P,RPM_B,PO,DIF,FET,TXT_E,CEV,POP out;
     class RPM,TXT,PO,TAG,DC sel;
 
 ```
